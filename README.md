@@ -50,5 +50,5 @@ fields in the data set are:
 
 You can try online the dataset.
 
-<iframe src="https://alroble8.shinyapps.io/cofid_app/">
+<iframe src="https://alroble8.shinyapps.io/cofid_app/" height="100%" width="100%" scrolling="yes" title="Iframe Example">
 </iframe>
