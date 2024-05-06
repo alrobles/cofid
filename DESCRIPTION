@@ -5,8 +5,8 @@ Version: 0.1.0
 Authors@R: 
     person("Angel", "Robles", , "a.l.robles.fernandez@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4674-4270"))
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: An R data package containing a curated list of copepod - fish  
+    recorded interactions and the paper where the information comes.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
