@@ -1,9 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cofid
-
-![Caption for the picture.](man/figures/cofid-logo.png)
+![Caption for the picture.](man/figures/cofid-logo-2.png)
 <!-- badges: start --> <!-- badges: end -->
 
 This R packages contains an expert curated Copepod Fish database. This

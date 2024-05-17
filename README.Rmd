@@ -13,8 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cofid
-![Caption for the picture.](man/figures/cofid-logo.png)
+![Caption for the picture.](man/figures/cofid-logo-2.png)
 <!-- badges: start -->
 <!-- badges: end -->
 
