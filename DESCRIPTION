@@ -5,12 +5,15 @@ Version: 0.1.0
 Authors@R: 
     person("Angel", "Robles", , "a.l.robles.fernandez@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4674-4270"))
-Description: An R data package containing a curated list of copepod - fish  
-    recorded interactions and the paper where the information comes.
+Description: A curated list of copepod-fish ecological interaction records.
+    It contains the taxonomy of the copepod and the fish and the publication
+    from which the information was obtained. This database contains only marine
+    and brackish water fish species. It excludes fish species that inhabit only
+    freshwater. 
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 2.10)
 RoxygenNote: 7.2.3
-URL: https://alrobles.github.io/cofid/
+URL: <https://alrobles.github.io/cofid/>
