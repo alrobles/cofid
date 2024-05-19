@@ -41,13 +41,6 @@ copepodHost_rectified <- copepodHost_rectified %>%
   tidyr::unite(col = "taxon_path", 8:14, sep = "|") %>%
   rename(AphiaID_host = AphiaID )
 copepodHost_rectified
-write.csv(copepodHost_rectified, "data-raw/host_rectified_simple.csv")
-View(copepodHost_rectified)
-
-host_only_marine <- copepodHost_rectified %>%
-  filter(isFreshwater == 1) %>%
-  filter(isBrackish == 0) %>%
-  filter(isMarine == 0)
 
 copepod_host_rectified <- left_join(copepod, copepodHost_rectified)
 View(copepod_host_rectified)
@@ -136,6 +129,20 @@ copepod_harmonized <- copepod_harmonized %>%
   mutate(target_taxon_external_id = paste0("AphiaID:", source_taxon_external_id)) %>%
   mutate(target_taxon_path = str_replace_all(source_taxon_path, "\\|", " \\| "))
 
-cofid <- copepod_harmonized
+
+
+copepodHost_rectified <- readr::read_csv("data-raw/host_rectified_simple.csv")
+View(copepodHost_rectified)
+
+host_fresh_water <- copepodHost_rectified %>%
+  filter(isFreshwater == 1) %>%
+  filter(isBrackish == 0) %>%
+  filter(isMarine == 0)
+copepod_harmonized_no_fresh <- copepod_harmonized %>%
+  filter(!target_taxon_name %in% host_fresh_water$valid_name)
+
+cofid <- copepod_harmonized_no_fresh
 write_csv(cofid, "data-raw/copepod_harmonized.csv")
+write_csv(copepod_harmonized_no_fresh, "data-raw/copepod_harmonized_no_fresh.csv")
+
 usethis::use_data(cofid, overwrite = TRUE)

@@ -33,3 +33,4 @@ Columnas <- Columnas %>%
 cofid <- cofid_table_no_freshwater
 
 usethis::use_data(cofid, overwrite = TRUE)
+cofid::cofid %>% View()
