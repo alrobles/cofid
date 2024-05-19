@@ -7,7 +7,7 @@
 #' 10.5281/zenodo.11002619
 #'
 #' @format ## `cofid`
-#' A data frame with 7735 rows and 12 columns:
+#' A data frame with 7273 rows and 10 columns:
 #' \describe{
 #'   \item{source_taxon_external_id}{WoRMS id of the parasite, i.e. AphiaID}
 #'   \item{source_taxon_name}{Scientific name of the species}
@@ -17,11 +17,7 @@
 #'   \item{target_taxon_external_id}{WoRMS id of the host, i.e. AphiaID}
 #'   \item{target_taxon_name}{Scientific name of the host}
 #'   \item{target_taxon_path}{Taxon path of the host}
-#'   \item{target_specimen_life_stage}{Life stage of the host}
-#'   \item{latitude}{Geographical coordinate}
-#'   \item{longitude}{Geographical coordinate}
 #'   \item{study_citation}{Source paper of the interaction}
-#'   ...
 #' }
 #' @source Copepod fish interaction database <10.5281/zenodo.11002619>
 "cofid"

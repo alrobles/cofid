@@ -1,7 +1,7 @@
 Package: cofid
 Type: Package
-Title: Copepod fish interaction database
-Version: 0.1.0
+Title: Copepod Fish Interaction Database
+Version: 1.0.0
 Authors@R: 
     person("Angel", "Robles", , "a.l.robles.fernandez@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4674-4270"))

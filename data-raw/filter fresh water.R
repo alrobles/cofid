@@ -9,6 +9,8 @@ Columnas_ergasilidae <- Columnas %>%
   filter(Fresh == 1) %>%
   filter(Saltwater == 0 & Brack == 0)
 
+cofid::cofid
+
 View(Columnas_ergasilidae)
 cofid_table <- cofid::cofid
 View(cofid_table)
