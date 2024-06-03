@@ -1,5 +1,4 @@
 
-View(cofid::cofid)
 library(tidyverse)
 copepod <- readxl::read_excel("data-raw/Copepod_All_parasites_2024.xlsx")
 copepod <- copepod %>%
@@ -132,17 +131,60 @@ copepod_harmonized <- copepod_harmonized %>%
 
 
 copepodHost_rectified <- readr::read_csv("data-raw/host_rectified_simple.csv")
-View(copepodHost_rectified)
 
 host_fresh_water <- copepodHost_rectified %>%
   filter(isFreshwater == 1) %>%
   filter(isBrackish == 0) %>%
   filter(isMarine == 0)
+
+host_marine <- copepodHost_rectified %>%
+  filter(isFreshwater == 0) %>%
+  filter(isBrackish == 1) %>%
+  filter(isMarine == 1)
+
+copepodHost_rectified_freshwater_marine_brackish <- copepodHost_rectified %>%
+  filter(isFreshwater == 1 &  isBrackish != 0 & isMarine != 0)
+
+copepodHost_rectified_freshwater_brackish <- copepodHost_rectified %>%
+  filter(isFreshwater == 1 &  isBrackish != 0)
+
+copepodHost_rectified_freshwater_marine <- copepodHost_rectified %>%
+  filter(isFreshwater == 1 &  isMarine != 0)
+
+copepodHost_rectified_marine <- copepodHost_rectified %>%
+  filter(isBrackish == 1 | isMarine == 1)
+
+copepodHost_rectified_no_fresh_water <- list(copepodHost_rectified_Fresh_water_marine_brackish,
+     copepodHost_rectified_freshwater_brackish,
+     copepodHost_rectified_freshwater_marine,
+     copepodHost_rectified_marine) %>%
+  reduce(rbind) %>%
+  distinct()
+
+host_only_freshwater <- copepodHost_rectified %>%
+  filter(isFreshwater == 1) %>%
+  filter(isBrackish == 0 & isMarine == 0)
+
+
 copepod_harmonized_no_fresh <- copepod_harmonized %>%
-  filter(!target_taxon_name %in% host_fresh_water$valid_name)
+  filter(target_taxon_name %in% copepodHost_rectified_no_fresh_water$valid_name)
+
+copepod_harmonized_no_fresh %>%
+  filter(target_taxon_name %in% host_only_freshwater$scientificname)
+
+#
+#
+#
+# copepod_harmonized_only_marine <- copepod_harmonized %>%
+#   filter(target_taxon_name %in% host_marine$valid_name)
+
+
+
+cofid %>%
+  filter(target_taxon_name %in% host_only_freshwater$scientificname)
 
 cofid <- copepod_harmonized_no_fresh
-write_csv(cofid, "data-raw/copepod_harmonized.csv")
-write_csv(copepod_harmonized_no_fresh, "data-raw/copepod_harmonized_no_fresh.csv")
+write_csv(cofid, "data-raw/cofid.csv")
+write_csv(host_only_freshwater, "data-raw/copepod_harmonized_freshwater.csv")
 
 usethis::use_data(cofid, overwrite = TRUE)

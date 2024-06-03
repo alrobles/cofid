@@ -7,7 +7,7 @@
 #' 10.5281/zenodo.11002619
 #'
 #' @format ## `cofid`
-#' A data frame with 14, 993 rows and 9 columns:
+#' A data frame with 14, 985 rows and 9 columns:
 #' \describe{
 #'   \item{source_taxon_external_id}{WoRMS id of the parasite, i.e. AphiaID}
 #'   \item{source_taxon_name}{Scientific name of the species}
