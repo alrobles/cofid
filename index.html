@@ -55,8 +55,11 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of cofid from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>Install from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"cofid"</span><span class="op">)</span></span></code></pre></div>
+<p>You can install the development version of cofid from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"alrobles/cofid"</span><span class="op">)</span></span>
 <span><span class="co"># load the data to your environment</span></span>
@@ -65,7 +68,7 @@
 <div class="section level2">
 <h2 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
 </h2>
-<p>The dataset contains <span class="math inline">7, 725</span> copepod - fish interaction records. The fields in the data set are:</p>
+<p>The dataset contains <span class="math inline">10, 344</span> copepod - fish interaction records. The fields in the data set are:</p>
 <ul>
 <li>source_taxon_external_id: the id number provided by <a href="https://www.marinespecies.org/" class="external-link">World Register of Marine Species</a>
 </li>
@@ -77,9 +80,57 @@
 </li>
 <li>target_taxon_name: Host fish species scientific name</li>
 <li>target_taxon_path: Taxonomical hierarchy of the host fish. Only contains 7 levels</li>
-<li>target_specimen_life_stage: The life stage of the host fish</li>
 <li>study_citation: Original study where the record cand be found</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="functionality">Functionality<a class="anchor" aria-label="anchor" href="#functionality"></a>
+</h2>
+<p><code>cofid</code> R package has two helping funtions. * <code>getCopepods</code> let the user filter the dataset given a family, genus or species of copepod</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://alrobles.github.io/cofid/">cofid</a></span><span class="op">)</span></span>
+<span><span class="va">Caligus</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getCopepods.html">getCopepods</a></span><span class="op">(</span>genus <span class="op">=</span> <span class="st">"Caligus"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Caligus</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      source_taxon_name   target_taxon_name</span></span>
+<span><span class="co">#&gt; 2073   Caligus affinis Pomatomus saltatrix</span></span>
+<span><span class="co">#&gt; 2074   Caligus affinis     Umbrina cirrosa</span></span>
+<span><span class="co">#&gt; 2075 Caligus alalongae    Thunnus alalunga</span></span>
+<span><span class="co">#&gt; 2076 Caligus alalongae      Thunnus obesus</span></span>
+<span><span class="co">#&gt; 2077 Caligus alalongae      Thunnus obesus</span></span>
+<span><span class="co">#&gt; 2078 Caligus alalongae      Thunnus obesus</span></span>
+<span><span class="co">#&gt;                                                                                                                                                                                                                                                       study_citation</span></span>
+<span><span class="co">#&gt; 2073                                                                     Oldewage, W.H. &amp; J.G. van As. (1989). Occurrence and distribution of Caligus (Copepoda: Siphonostomatoida) in African coastal waters. Revue de Zoologie Africaine 103(1):91-98, appendix 1.</span></span>
+<span><span class="co">#&gt; 2074                                                                                                                    Kensley, B. &amp; J.R. Grindley. (1973). South African parasitic Copepoda. Annals of the South African Museum 62(3):69-130, figs. 1-35. (x-1973)</span></span>
+<span><span class="co">#&gt; 2075 Raibaut, A., C. Combes &amp; F. Benoit. (1998). Analysis of the parasitic copepod species richness among Mediterranean fish. &lt;em&gt;In: Dahms, H.U., T. Glatzel, H.J. Hirche, S. Schiel &amp; H.K. Schminke, (eds.). Proceedings of the 6th International Conference on Co</span></span>
+<span><span class="co">#&gt; 2076                                                                     Oldewage, W.H. &amp; J.G. van As. (1989). Occurrence and distribution of Caligus (Copepoda: Siphonostomatoida) in African coastal waters. Revue de Zoologie Africaine 103(1):91-98, appendix 1.</span></span>
+<span><span class="co">#&gt; 2077                                                                                                                         Dippenaar, S.M. (2005). Reported siphonostomatoid copepods parasitic on marine fishes of southern Africa. Crustaceana 77(11):1281-1328.</span></span>
+<span><span class="co">#&gt; 2078 Capart, A. (1959). Copépodes parasites. &lt;em&gt;Résultats Scientifiques de l'Expédition Océanographique Belge dans les Eaux Côtieres Afrricaines de l'Atlantique Sud (1948-1949). Institut Royale des Sciences Naturelles de Belgique.&lt;/em&gt; 3(5):59-126, figs. 1-37</span></span></code></pre></div>
+<p>In addition, the user can also retrive the data withouth citation for convenience:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Caligidae</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getCopepods.html">getCopepods</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"Caligidae"</span>, citation <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Caligidae</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         source_taxon_name    target_taxon_name</span></span>
+<span><span class="co">#&gt; 2050 Caligodes laciniatus   Strongylura leiura</span></span>
+<span><span class="co">#&gt; 2051 Caligodes laciniatus       Tylosurus acus</span></span>
+<span><span class="co">#&gt; 2052 Caligodes laciniatus     Tylosurus choram</span></span>
+<span><span class="co">#&gt; 2053 Caligodes laciniatus Tylosurus crocodilus</span></span>
+<span><span class="co">#&gt; 2054 Caligodes laciniatus  Platybelone argalus</span></span>
+<span><span class="co">#&gt; 2055 Caligodes laciniatus       Ablennes hians</span></span></code></pre></div>
+<ul>
+<li>
+<code>getFish</code> let the user filter the dataset given a family, genus or species of fish:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://alrobles.github.io/cofid/">cofid</a></span><span class="op">)</span></span>
+<span><span class="va">Molva_molva</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getFish.html">getFish</a></span><span class="op">(</span>species <span class="op">=</span> <span class="st">"Molva molva"</span>, citation <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Molva_molva</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            source_taxon_name target_taxon_name</span></span>
+<span><span class="co">#&gt; 562       Cresseyus confusus       Molva molva</span></span>
+<span><span class="co">#&gt; 2214          Caligus curtus       Molva molva</span></span>
+<span><span class="co">#&gt; 2387       Caligus elongatus       Molva molva</span></span>
+<span><span class="co">#&gt; 4184 Lernaeocera branchialis       Molva molva</span></span>
+<span><span class="co">#&gt; 4317       Lernaeocera lusci       Molva molva</span></span>
+<span><span class="co">#&gt; 6962 Chondracanthus brotulae       Molva molva</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="online-access">Online access<a class="anchor" aria-label="anchor" href="#online-access"></a>

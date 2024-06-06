@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://alrobles.github.io/cofid/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://alrobles.github.io/cofid/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://alrobles.github.io/cofid/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://alrobles.github.io/cofid/index.html</loc>
   </url>
   <url>
-    <loc>/reference/cofid.html</loc>
+    <loc>https://alrobles.github.io/cofid/reference/cofid.html</loc>
   </url>
   <url>
-    <loc>/reference/getCopepods.html</loc>
+    <loc>https://alrobles.github.io/cofid/reference/getCopepods.html</loc>
   </url>
   <url>
-    <loc>/reference/getFish.html</loc>
+    <loc>https://alrobles.github.io/cofid/reference/getFish.html</loc>
   </url>
   <url>
-    <loc>/reference/globalVariables.html</loc>
+    <loc>https://alrobles.github.io/cofid/reference/globalVariables.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://alrobles.github.io/cofid/reference/index.html</loc>
   </url>
 </urlset>
