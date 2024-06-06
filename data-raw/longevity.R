@@ -1,5 +1,6 @@
 library(phytools)
 library(tidyverse)
+
 fish_tree <- phytools::read.newick("data-raw/actinopt_12k_raxml.tre.xz")
 Host_rectified <- readr::read_csv("data-raw/host_rectified_simple.csv")
 
@@ -45,7 +46,11 @@ fish_tiplabel_sample_harmonized %>%
   filter(genus %in% valid_genus$genus)
 
 util_columns <- readr::read_csv("data-raw/Columnas_utiles.csv")
-
+View(util_columns)
+util_columns %>%
+  select(Host_species, LongevityWild) %>%
+  distinct() %>%
+  na.exclude()
 util_columns %>%
   select(Host_species,LongevityWild, DepthRangeShallow,DepthRangeDeep,LTypeMaxM, Length.x, BodyShapeI.y, BodyShapeI.x, DemersPelag, AnaCat, LTypeMaxM, )
 
@@ -151,7 +156,7 @@ morphotraits_valid_reconstruct <- morphotraits_valid %>%
 View(morphotraits_valid_reconstruct)
 fish_tree_harmonized
 morphotraits_valid
-
+library(Rphylopars)
 p_BM <- phylopars(trait_data = morphotraits_valid_reconstruct, tree = fish_tree_harmonized)
 
 morphotraits_reconstructed <- p_BM$anc_recon %>% as_tibble() %>%
@@ -175,9 +180,10 @@ morphotraits_reconstructed_fullData <- morphotraits_reconstructed %>%
 
 
 morphotraits_train <- morphotraits_reconstructed_fullData %>%
-  sample_frac(0.75)
+  sample_frac(0.5)
 morphotraits_test <- anti_join(morphotraits_reconstructed_fullData, morphotraits_train)
-
+library(tidymodels)
+library(tidyverse)
 norm_recipe <-
   recipe(
     LongevityWild ~ DepthRangeShallow + DepthRangeDeep + Length.x,
@@ -190,7 +196,6 @@ norm_recipe <-
   #step_log(LongevityWild, base = 10) %>%
   # estimate the means and standard deviations
   prep(training = morphotraits_test, retain = TRUE)
-
 
 
 xgboost_fit <-
@@ -210,9 +215,20 @@ xgboost_fit <-
   fit(LongevityWild ~ ., data = bake(norm_recipe, new_data = NULL))
 
 
-morphotraits_reconstructed %>%
+p2 <- morphotraits_reconstructed %>%
   bind_cols(
   predict(xgboost_fit, new_data = all_normalized ) %>%
     rename(xgboost = .pred)
 ) %>%
   ggplot() + geom_point(aes(LongevityWild, xgboost))
+
+
+p1 <- morphotraits_test %>%
+  bind_cols(
+    predict(xgboost_fit, new_data = test_normalized ) %>%
+      rename(xgboost = .pred)
+  ) %>%
+  ggplot() + geom_point(aes(LongevityWild, xgboost))
+cowplot::plot_grid(p1, p2)
+
+View(morphotraits_test)

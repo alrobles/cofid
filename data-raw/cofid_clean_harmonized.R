@@ -1,6 +1,7 @@
 
 library(tidyverse)
 copepod <- readxl::read_excel("data-raw/Copepod_All_parasites_2024.xlsx")
+
 copepod <- copepod %>%
   select(AphiaID_parasite, ScientificName_parasite, AphiaID_host, Scientificname_host, Source_fulltext) %>%
   na.exclude() %>%

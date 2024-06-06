@@ -15,5 +15,5 @@ Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 2.10)
-RoxygenNote: 7.2.3
-URL: <https://alrobles.github.io/cofid/>
+RoxygenNote: 7.3.1
+URL: <https://alrobles.github.io/cofid/>, https://alrobles.github.io/cofid/

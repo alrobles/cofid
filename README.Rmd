@@ -24,6 +24,11 @@ The data cleaning, standarization and wrapping as an R packages was done by [Án
 
 ## Installation
 
+Install from CRAN:
+``` r 
+install.packages("cofid")
+```
+
 You can install the development version of cofid from [GitHub](https://github.com/) with:
 
 ``` r
@@ -36,7 +41,7 @@ data(cofid, "cofid")
 
 ## Dataset
 
-The dataset contains $7, 725$ copepod - fish interaction records. The fields in the data set
+The dataset contains $10, 344$ copepod - fish interaction records. The fields in the data set
 are:
 
 * source_taxon_external_id: the id number provided by [World Register of Marine Species](https://www.marinespecies.org/)
@@ -48,15 +53,34 @@ The records are mainly ectoparasitic (7654). There are 74 endoparasitic and 7 pa
 * target_taxon_external_id: The host fish id number provided by [World Register of Marine Species](https://www.marinespecies.org/)
 * target_taxon_name: Host fish species scientific name
 * target_taxon_path: Taxonomical hierarchy of the host fish. Only contains 7 levels
-* target_specimen_life_stage: The life stage of the host fish
 * study_citation: Original study where the record cand be found
 
+## Functionality
+`cofid` R package has two helping funtions.
+* `getCopepods` let the user filter the dataset given a family, genus or species of copepod
 
+```{r, include = TRUE}
+library(cofid)
+Caligus <- getCopepods(genus = "Caligus")
+head(Caligus)
+```
+In addition, the user can also retrive the data withouth citation
+for convenience:
 
+```{r, include = TRUE}
+Caligidae <- getCopepods(family = "Caligidae", citation = FALSE)
+head(Caligidae)
+```
 
+* `getFish` let the user filter the dataset given a family, genus or species of fish:
+
+```{r exampleFish}
+library(cofid)
+Molva_molva <- getFish(species = "Molva molva", citation = FALSE)
+head(Molva_molva)
+```
 
 ## Online access
-
 
 You can try online the dataset.
 
