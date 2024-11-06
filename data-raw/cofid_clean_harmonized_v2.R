@@ -69,7 +69,7 @@ cofid <- copepod_harmonized %>%
          interaction_type = Trait_value,
          target_taxon_external_id = valid_AphiaID_host,
          study_citation = Source_fulltext
-         ) %>%
+  ) %>%
   mutate(source_taxon_external_id = paste0("AphiaID:", source_taxon_external_id)) %>%
   mutate(target_taxon_external_id = paste0("AphiaID:", target_taxon_external_id)) %>%
   distinct()
